@@ -1,24 +1,28 @@
-// const { ipcRenderer } = require("electron");
+
+
+const NOTIFICATION_TITLE = 'Check'
+
+const CLICK_MESSAGE = 'Notification clicked'
+const IMAGE = './image/github.png'
+console.log(IMAGE)
 
 
 
-// ipcRenderer.invoke("showDialog", "message");
+const createNotification = () => {
+  const NOTIFICATION_BODY =
+  `LEETCODE 0/1\nGITHUB COMMIT 0/1`
+  new Notification(NOTIFICATION_TITLE, { body: NOTIFICATION_BODY, icon: IMAGE, requireInteraction: true})
+}
 
-const information = document.getElementById('info')
-information.innerText = `This app is using Chrome (v${versions.chrome()}), Node.js (v${versions.node()}), and Electron (v${versions.electron()})`
 
-const func = async () => {
-    const response = await window.versions.ping()
-    console.log(response) // prints out 'pong'
+setInterval(() => {
+  const date = new Date()
+  console.log(date.getMinutes())
+  if(date.getMinutes() == 0 ){
+    createNotification()
   }
 
+}, 60 * 1000)
+  //message goes off every hour 
 
-func()
-
-const NOTIFICATION_TITLE = 'Title'
-const NOTIFICATION_BODY =
-  'Notification from the Renderer process. Click to log to console.'
-const CLICK_MESSAGE = 'Notification clicked'
-
-new Notification(NOTIFICATION_TITLE, { body: NOTIFICATION_BODY }).onclick =
-  () => console.log(CLICK_MESSAGE)
+//when date object mins is 00:00

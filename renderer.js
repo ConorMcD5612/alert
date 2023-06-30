@@ -2,27 +2,41 @@
 
 const NOTIFICATION_TITLE = 'Check'
 
-const CLICK_MESSAGE = 'Notification clicked'
 const IMAGE = './image/github.png'
-console.log(IMAGE)
+let buttons = document.querySelectorAll('.complete-btn')
 
+let isDone = {
+  leetCode: 0,
+  gitCommit: 0
+}
+
+console.log(buttons)
+
+buttons.forEach((button) => {
+
+  button.addEventListener('click', () => {
+   button.parentNode.innerText = '1/1'
+   isDone[button.id] = 1
+  })
+} )
 
 
 const createNotification = () => {
-  const NOTIFICATION_BODY =
-  `LEETCODE 0/1\nGITHUB COMMIT 0/1`
-  new Notification(NOTIFICATION_TITLE, { body: NOTIFICATION_BODY, icon: IMAGE, requireInteraction: true})
+  let notificationText = `LEETCODE ${isDone.leetCode}/1\nGITHUB COMMIT ${isDone.gitCommit}/1`
+  new Notification(NOTIFICATION_TITLE, { body: notificationText, icon: IMAGE, requireInteraction: true})
 }
 
-
-setInterval(() => {
+const interval = setInterval(() => {
   const date = new Date()
   console.log(date.getMinutes())
+
   if(date.getMinutes() == 0 ){
     createNotification()
   }
 
-}, 60 * 1000)
-  //message goes off every hour 
+  if(Object.values(isDone).every(item=>item)){
+    clearInterval(interval)
+  }
 
-//when date object mins is 00:00
+}, 60 * 1000)
+ 

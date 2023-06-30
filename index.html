@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <meta
-      http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <title>Hello from Electron renderer!</title>
-  </head>
-  <body>
-    <div>
-      Leetcode Completed <span>>0/1</span>
-      <button class="complete-btn">Complete</button>
-    </div>
 
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <title>Alert</title>
+</head>
+
+<body>
+  <div>
+    Leetcode Completed
     <div>
-      Git commit Completed <span>0/1</span>
-      <button class="complete-btn">Complete</button>
+      0/1
+    <button id="leetCode" class="complete-btn">Complete</button>
+  </div>
+  </div>
+
+  <div>
+    Git commit Completed
+    <div>
+      0/1
+      <button id="gitCommit" class="complete-btn">Complete</button>
     </div>
-  </body>
-  <script src="./renderer.js"></script>
+  </div>
+</body>
+<script src="./renderer.js"></script>
+
 </html>

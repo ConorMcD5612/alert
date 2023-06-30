@@ -1,7 +1,4 @@
-
-
 const NOTIFICATION_TITLE = 'Check'
-
 const IMAGE = './image/github.png'
 let buttons = document.querySelectorAll('.complete-btn')
 
@@ -9,8 +6,6 @@ let isDone = {
   leetCode: 0,
   gitCommit: 0
 }
-
-console.log(buttons)
 
 buttons.forEach((button) => {
 
@@ -28,7 +23,6 @@ const createNotification = () => {
 
 const interval = setInterval(() => {
   const date = new Date()
-  console.log(date.getMinutes())
 
   if(date.getMinutes() == 0 ){
     createNotification()
